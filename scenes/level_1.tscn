@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cuiq1dm4n1ybm"]
 
 [ext_resource type="PackedScene" uid="uid://c8ffypnvhmgjf" path="res://scenes/player.tscn" id="1_014kd"]
+[ext_resource type="Script" uid="uid://dc6xa26j2sbvq" path="res://scripts/level_1.gd" id="1_bswci"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ymhcm"]
 
@@ -17,6 +18,7 @@
 [sub_resource type="QuadMesh" id="QuadMesh_16ct4"]
 
 [node name="level1" type="Node2D" unique_id=1566253779]
+script = ExtResource("1_bswci")
 
 [node name="grass" type="MeshInstance2D" parent="." unique_id=1632185561]
 modulate = Color(0.08627451, 0.46666667, 0.14509805, 1)
