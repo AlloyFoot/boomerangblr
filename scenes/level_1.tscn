@@ -2,12 +2,63 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_ymhcm"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_2374a"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mtrw7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ss1as"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dfpwi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0x7qa"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_16ct4"]
+
 [node name="level1" type="Node2D" unique_id=1566253779]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1632185561]
-modulate = Color(0.08495923, 0.21418583, 0.14338541, 1)
+[node name="grass" type="MeshInstance2D" parent="." unique_id=1632185561]
+modulate = Color(0.08627451, 0.46666667, 0.14509805, 1)
 self_modulate = Color(0.739421, 0.8312513, 0.89342606, 1)
-position = Vector2(-2995, -250.99998)
-scale = Vector2(263208, 212248.02)
+scale = Vector2(500000, 500000)
 mesh = SubResource("QuadMesh_ymhcm")
+metadata/_edit_lock_ = true
+
+[node name="verticalpath(main)" type="MeshInstance2D" parent="." unique_id=1326463753]
+modulate = Color(0.3529412, 0.24705882, 0.08235294, 0.99607843)
+scale = Vector2(100, 5000000)
+mesh = SubResource("QuadMesh_2374a")
+metadata/_edit_lock_ = true
+
+[node name="horizontalpath(main)" type="MeshInstance2D" parent="." unique_id=1480943297]
+modulate = Color(0.3529412, 0.24705882, 0.08235294, 0.99607843)
+scale = Vector2(5000000, 100)
+mesh = SubResource("QuadMesh_mtrw7")
+metadata/_edit_lock_ = true
+
+[node name="summerPlain(top right)" type="MeshInstance2D" parent="." unique_id=60740728]
+modulate = Color(0.7607843, 0.69803923, 0.5019608, 1)
+position = Vector2(50050, -50050)
+scale = Vector2(100000, 100000)
+mesh = SubResource("QuadMesh_ss1as")
+metadata/_edit_lock_ = true
+
+[node name="winterPlain(bottom right)" type="MeshInstance2D" parent="." unique_id=1742130481]
+modulate = Color(1, 0.98039216, 0.98039216, 1)
+position = Vector2(50050, 50050)
+scale = Vector2(100000, 100000)
+mesh = SubResource("QuadMesh_dfpwi")
+metadata/_edit_lock_ = true
+
+[node name="springPlain(top left)" type="MeshInstance2D" parent="." unique_id=2034197976]
+modulate = Color(0, 0.98039216, 0.6039216, 1)
+position = Vector2(-50050, -50050)
+scale = Vector2(100000, 100000)
+mesh = SubResource("QuadMesh_0x7qa")
+metadata/_edit_lock_ = true
+
+[node name="fallPlain(bottom left)" type="MeshInstance2D" parent="." unique_id=1047339048]
+modulate = Color(0.8235294, 0.4117647, 0.11764706, 1)
+position = Vector2(-50050, 50050)
+scale = Vector2(100000, 100000)
+mesh = SubResource("QuadMesh_16ct4")
 metadata/_edit_lock_ = true
