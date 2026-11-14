@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cuiq1dm4n1ybm"]
 
+[ext_resource type="PackedScene" uid="uid://c8ffypnvhmgjf" path="res://scenes/player.tscn" id="1_014kd"]
+
 [sub_resource type="QuadMesh" id="QuadMesh_ymhcm"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2374a"]
@@ -62,3 +64,5 @@ position = Vector2(-50050, 50050)
 scale = Vector2(100000, 100000)
 mesh = SubResource("QuadMesh_16ct4")
 metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=1188509884 instance=ExtResource("1_014kd")]
