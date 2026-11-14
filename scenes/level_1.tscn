@@ -66,3 +66,4 @@ mesh = SubResource("QuadMesh_16ct4")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1188509884 instance=ExtResource("1_014kd")]
+position = Vector2(569.99994, 318.99997)
