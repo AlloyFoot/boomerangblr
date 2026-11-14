@@ -7,11 +7,12 @@ var speed = 300.0
 
 @export var max_hp: int = 3
 var current_hp: int
+var is_invulnerable: bool = false # Cooldown flag so you don't instantly die
 
 const BOOMERANG_SCENE = preload("res://scenes/boomerang.tscn")
 var can_throw: bool = true
 
-@onready var ui: CanvasLayer = get_node_or_null("../UI") # Adjust node path to your UI instance
+@onready var ui: CanvasLayer = get_node_or_null("../UI")
 
 func _ready() -> void:
 	current_hp = max_hp
@@ -35,6 +36,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	# Check if we bumped into a zombie
+	if not is_invulnerable:
+		for i in range(get_slide_collision_count()):
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			
+			if collider and collider.is_in_group("Zombies"):
+				take_damage(1)
+				start_invulnerability()
+				break # Only take damage from one zombie per check
+
 func take_damage(amount: int = 1) -> void:
 	if current_hp <= 0:
 		return
@@ -48,6 +60,18 @@ func take_damage(amount: int = 1) -> void:
 	if current_hp <= 0:
 		die()
 
+func start_invulnerability() -> void:
+	is_invulnerable = true
+	
+	# Optional visual feedback: make the sprite flash or semi-transparent
+	$playerSprite.modulate.a = 0.5 
+	
+	# Wait for 1 second before allowing damage again
+	await get_tree().create_timer(1.0).timeout
+	
+	is_invulnerable = false
+	$playerSprite.modulate.a = 1.0 # Restore normal opacity
+
 func heal(amount: int = 1) -> void:
 	current_hp = clamp(current_hp + amount, 0, max_hp)
 	health_changed.emit(current_hp)
@@ -56,9 +80,8 @@ func heal(amount: int = 1) -> void:
 
 func die() -> void:
 	player_died.emit()
-	# Disable movement and input, or reload scene
 	set_physics_process(false)
-	# get_tree().reload_current_scene() # Uncomment to restart level on death
+	# get_tree().reload_current_scene() # Uncomment this if you want the level to restart on death
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("throw_boomerang") and can_throw:
