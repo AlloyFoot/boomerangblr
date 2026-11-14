@@ -1,0 +1,9 @@
+
+# Godot generated files
+.godot/
+
+# macOS files
+.DS_Store
+
+# IDE settings
+.vscode/
