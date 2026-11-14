@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://pgk6nv4kdsqn"]
+
+[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_1vlb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymhcm"]
+
+[node name="zombie" type="CharacterBody2D" unique_id=591967981]
+script = ExtResource("1_1vlb3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1444867131]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=487387313]
+shape = SubResource("RectangleShape2D_ymhcm")

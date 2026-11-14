@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cuiq1dm4n1ybm"]
 
+[ext_resource type="Shader" path="res://scenes/tilingShader2.gdshader" id="1_4nkto"]
 [ext_resource type="PackedScene" uid="uid://c8ffypnvhmgjf" path="res://scenes/player.tscn" id="1_014kd"]
+[ext_resource type="Shader" uid="uid://ds4b7jqnosdka" path="res://scenes/tiling.gdshader" id="1_rus8k"]
+[ext_resource type="Texture2D" uid="uid://cogudl1wxjryg" path="res://assets/cherry_tile.png" id="6_15mv3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ymhcm"]
 
@@ -8,11 +11,27 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_mtrw7"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2els"]
+shader = ExtResource("1_rus8k")
+shader_parameter/tile_count = Vector2(10, 10)
+
 [sub_resource type="QuadMesh" id="QuadMesh_ss1as"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xbjy"]
+shader = ExtResource("1_4nkto")
+shader_parameter/tile_count = Vector2(10, 10)
 
 [sub_resource type="QuadMesh" id="QuadMesh_dfpwi"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rus8k"]
+shader = ExtResource("1_rus8k")
+shader_parameter/tile_count = Vector2(10, 10)
+
 [sub_resource type="QuadMesh" id="QuadMesh_0x7qa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4nkto"]
+shader = ExtResource("1_rus8k")
+shader_parameter/tile_count = Vector2(10, 10)
 
 [sub_resource type="QuadMesh" id="QuadMesh_16ct4"]
 
@@ -38,31 +57,44 @@ mesh = SubResource("QuadMesh_mtrw7")
 metadata/_edit_lock_ = true
 
 [node name="summerPlain(top right)" type="MeshInstance2D" parent="." unique_id=60740728]
-modulate = Color(0.7607843, 0.69803923, 0.5019608, 1)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_g2els")
 position = Vector2(50050, -50050)
-scale = Vector2(100000, 100000)
+scale = Vector2(100000, -100000)
 mesh = SubResource("QuadMesh_ss1as")
+texture = ExtResource("6_15mv3")
 metadata/_edit_lock_ = true
 
 [node name="winterPlain(bottom right)" type="MeshInstance2D" parent="." unique_id=1742130481]
-modulate = Color(1, 0.98039216, 0.98039216, 1)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_5xbjy")
 position = Vector2(50050, 50050)
-scale = Vector2(100000, 100000)
+scale = Vector2(100000, -100000)
 mesh = SubResource("QuadMesh_dfpwi")
+texture = ExtResource("6_15mv3")
 metadata/_edit_lock_ = true
 
 [node name="springPlain(top left)" type="MeshInstance2D" parent="." unique_id=2034197976]
 modulate = Color(0, 0.98039216, 0.6039216, 1)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_rus8k")
 position = Vector2(-50050, -50050)
-scale = Vector2(100000, 100000)
+scale = Vector2(100000, -100000)
 mesh = SubResource("QuadMesh_0x7qa")
+texture = ExtResource("6_15mv3")
 metadata/_edit_lock_ = true
 
 [node name="fallPlain(bottom left)" type="MeshInstance2D" parent="." unique_id=1047339048]
-modulate = Color(0.8235294, 0.4117647, 0.11764706, 1)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4nkto")
 position = Vector2(-50050, 50050)
-scale = Vector2(100000, 100000)
+scale = Vector2(100000, -100000)
 mesh = SubResource("QuadMesh_16ct4")
+texture = ExtResource("6_15mv3")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1188509884 instance=ExtResource("1_014kd")]
