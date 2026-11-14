@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dki85myb81h7s" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://d4h4n1ulxy4qd" path="res://assets/3Idle.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://cqvloi5ee8oi3" path="res://assets/boomerang.png" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -62,6 +63,12 @@ script = ExtResource("1_3vyb7")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gkh53")
 frame_progress = 0.94867444
+
+[node name="boomerang" type="Sprite2D" parent="AnimatedSprite2D" unique_id=1088453099]
+position = Vector2(4.887271, 3.1127279)
+rotation = -1.5707964
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1575208931]
 shape = SubResource("RectangleShape2D_ymhcm")
