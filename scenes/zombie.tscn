@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://pgk6nv4kdsqn"]
+[gd_scene format=3 uid="uid://qk6ctkqlyeas"]
 
-[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_1vlb3"]
+[ext_resource type="Script" uid="uid://4qq3gy3o4cmj" path="res://scripts/zombie.gd" id="1_1vlb3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymhcm"]
 
