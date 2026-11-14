@@ -58,6 +58,10 @@ size = Vector2(10.4, 14.4)
 
 [node name="Player" type="CharacterBody2D" unique_id=1188509884]
 scale = Vector2(5, 5)
+<<<<<<< HEAD
+=======
+motion_mode = 1
+>>>>>>> ved
 script = ExtResource("1_3vyb7")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="." unique_id=1176201898]
