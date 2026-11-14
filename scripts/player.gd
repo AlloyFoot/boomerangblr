@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var speed = 300.0 
 
+const BOOMERANG_SCENE = preload("res://scenes/boomerang.tscn")
+var can_throw: bool = true
+
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
 
@@ -17,32 +20,29 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
 
-	
-	
 	move_and_slide()
 
-
-@export var boomerang_scene: PackedScene
-
 func _unhandled_input(event: InputEvent) -> void:
-	# Check for left mouse click
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event.is_action_pressed("throw_boomerang") and can_throw:
 		throw_boomerang()
 
 func throw_boomerang() -> void:
-	if not boomerang_scene:
-		return
-
-	# Create an instance of the boomerang
-	var boomerang = boomerang_scene.instantiate()
+	can_throw = false # Prevent throwing multiple until caught
 	
-	# Point it toward the mouse cursor
-	var mouse_pos = get_global_mouse_position()
-	boomerang.global_position = global_position
-	boomerang.look_at(mouse_pos)
+	var boomerang = BOOMERANG_SCENE.instantiate()
 	
-	# Tell the boomerang who the player is so it knows where to return
-	boomerang.player = self
+	# Determine direction based on mouse position
+	var throw_dir = (get_global_mouse_position() - global_position).normalized()
 	
-	# Add it to the main scene tree (so it doesn't move when the player moves)
+	# Add it to the scene tree first
 	get_tree().current_scene.add_child(boomerang)
+	boomerang.global_position = global_position
+	
+	# Connect signal to reset can_throw when the boomerang returns
+	boomerang.returned.connect(_on_boomerang_returned)
+	
+	# Initialize the throw
+	boomerang.throw(throw_dir, self)
+
+func _on_boomerang_returned() -> void:
+	can_throw = true
