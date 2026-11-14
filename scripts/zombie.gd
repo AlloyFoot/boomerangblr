@@ -1,22 +1,18 @@
 extends CharacterBody2D
 
-var speed = 300.0 
+@export var speed: float = 40.0 # Lower number = slower walk speed (try 30 to 50)
 
-func _process(delta: float) -> void:
-	pass
-	
-func _physics_process(delta: float) -> void:
-	var move_dir = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
-	
-	if move_dir != Vector2.ZERO:
-		velocity = speed * move_dir
-		
-		if move_dir.x != 0:
-			$playerSprite.flip_h = move_dir.x < 0
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.y = move_toward(velocity.y, 0, speed)
+@onready var sprite: Sprite2D = $Sprite2D # Adjust if your sprite has a different name
 
-	
-	
-	move_and_slide()
+func _physics_process(_delta: float) -> void:
+	var player = get_tree().current_scene.get_node_or_null("Player")
+
+	if player:
+		# Smoothly move toward the player's position
+		var direction = global_position.direction_to(player.global_position)
+		velocity = direction * speed
+		move_and_slide()
+
+		# Safely flip sprite based on walking direction
+		if sprite and direction.x != 0:
+			sprite.flip_h = direction.x < 0
