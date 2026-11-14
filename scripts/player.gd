@@ -20,3 +20,29 @@ func _physics_process(delta: float) -> void:
 	
 	
 	move_and_slide()
+
+
+@export var boomerang_scene: PackedScene
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Check for left mouse click
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		throw_boomerang()
+
+func throw_boomerang() -> void:
+	if not boomerang_scene:
+		return
+
+	# Create an instance of the boomerang
+	var boomerang = boomerang_scene.instantiate()
+	
+	# Point it toward the mouse cursor
+	var mouse_pos = get_global_mouse_position()
+	boomerang.global_position = global_position
+	boomerang.look_at(mouse_pos)
+	
+	# Tell the boomerang who the player is so it knows where to return
+	boomerang.player = self
+	
+	# Add it to the main scene tree (so it doesn't move when the player moves)
+	get_tree().current_scene.add_child(boomerang)
