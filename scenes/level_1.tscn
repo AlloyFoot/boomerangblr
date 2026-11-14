@@ -2,12 +2,26 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_ymhcm"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_2374a"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mtrw7"]
+
 [node name="level1" type="Node2D" unique_id=1566253779]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1632185561]
-modulate = Color(0.08495923, 0.21418583, 0.14338541, 1)
+[node name="grass" type="MeshInstance2D" parent="." unique_id=1632185561]
+modulate = Color(0.08627451, 0.46666667, 0.14509805, 1)
 self_modulate = Color(0.739421, 0.8312513, 0.89342606, 1)
-position = Vector2(-2995, -250.99998)
-scale = Vector2(263208, 212248.02)
+scale = Vector2(500000, 500000)
 mesh = SubResource("QuadMesh_ymhcm")
 metadata/_edit_lock_ = true
+
+[node name="verticalpath(main)" type="MeshInstance2D" parent="." unique_id=1326463753]
+modulate = Color(0.3529412, 0.24705882, 0.08235294, 0.99607843)
+scale = Vector2(100, 5000000)
+mesh = SubResource("QuadMesh_2374a")
+metadata/_edit_lock_ = true
+
+[node name="horizontalpath(main)" type="MeshInstance2D" parent="." unique_id=1480943297]
+modulate = Color(0.3529412, 0.24705882, 0.08235294, 0.99607843)
+scale = Vector2(5000000, 100)
+mesh = SubResource("QuadMesh_mtrw7")
